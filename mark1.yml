@@ -1,0 +1,6 @@
+---
+- name: Automate Release Validation
+  hosts: "localhost"
+  become: yes
+  roles:
+    - roles

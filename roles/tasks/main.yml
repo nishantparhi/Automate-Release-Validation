@@ -1,0 +1,22 @@
+---
+- include_vars: ../vars/main.yml
+
+# Checking if the log files are empty or not
+- name: Checking logs are generated
+  shell: journalctl -aeb
+  register: stdout
+
+# If the log file is empty
+- debug:
+    msg: "error no log files generated" 
+  when: stdout['stdout_lines'] == ""   
+
+#Last Log
+- name: Check that if logs are generated or not
+  shell: sudo journalctl -aeb | grep "$(date +"%d %T")"
+  register: stdout
+
+# Error if there are no logs
+- debug:
+    msg: "error, no logs " 
+  when: stdout['stdout_lines'] == ""
