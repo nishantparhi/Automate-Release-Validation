@@ -2,7 +2,7 @@ galaxy_info:
   author: Nishant Parhi
   description: Automate Release Valiadation
   min_ansible_version: 2.4
-    platforms:
+  platforms:
   - name: Fedora
     versions:
     - all
